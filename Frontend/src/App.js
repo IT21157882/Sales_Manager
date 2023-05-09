@@ -6,8 +6,9 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Items from "./components/Product/Items";
 import Itemdetail from "./components/Product/Itemdetail";
-import Report from "./components/Report";
-import Chart from "./components/Chart";
+// import Report from "./components/Report";
+// import Chart from "./components/Chart";
+
 
 
 
@@ -23,9 +24,9 @@ function App() {
         <Route path="/add" element={<Additem/>} exact />
         <Route path="/products" element={<Items/>} exact />
         <Route path="/about" element={<About/>} exact />
-        <Route path="/report" element={<Report/>} exact />
-        <Route path="/chart" element={<Chart/>} exact />
+        {/* <Route path="/chart" element={<Items/>} exact /> */}
         <Route path="/Products/:id" element={<Itemdetail/>} exact />
+        
 
       </Routes>
 

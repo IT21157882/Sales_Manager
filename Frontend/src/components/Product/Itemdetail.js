@@ -77,6 +77,8 @@ const Itemdetail = () => {
 
   return (
     <div>
+      <br></br>
+      <h2><center>Update Product</center></h2>
       <form onSubmit={handleSubmit}>
         <Box
           display="flex"
@@ -146,10 +148,12 @@ const Itemdetail = () => {
             }
             label="Available"
           />
-
-          <button variant="contained" type="submit">
+         
+          <button variant="contained" type="submit" style={{ backgroundColor: 'orange', Color: '#ffffff', padding: '10px 20px'}}>
             Update Product
           </button>
+          <br></br>
+
         </Box>
       </form>
     </div>

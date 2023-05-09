@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { AppBar, Tab, Tabs, Toolbar, Typography} from '@mui/material';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { NavLink } from 'react-router-dom'
-
+import myImage from "../components/images/logo.png";
 
 
 const Header = () => {
@@ -13,7 +13,8 @@ const Header = () => {
         <Toolbar>
           <NavLink to="/" sx={{color:"white"}}>
         <Typography>
-            <LibraryBooksIcon/>
+        <img src={myImage} alt="Image description" height={80} width={80}/>
+            {/* <LibraryBooksIcon/> */}
             </Typography></NavLink>
             <Tabs  
                  sx={{ml: 'auto'}}

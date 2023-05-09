@@ -2,6 +2,7 @@ import { Box, FormLabel, TextField } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
+import backgroundImage from "./images/tae.jpg";
 
 import "./Additem.css";
 import React, { useState, useEffect } from "react";
@@ -77,8 +78,10 @@ const Add = () => {
   }, [imageSelected]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Box
+    <div style={{ backgroundImage: `url(${backgroundImage})`}}>
+    <form onSubmit={handleSubmit} >
+      
+      <Box style={{ backgroundColor: 'white'}}
         display="flex"
         flexDirection="column"
         justifyContent={"center"}
@@ -87,8 +90,23 @@ const Add = () => {
         alignSelf="center"
         marginLeft={"auto"}
         marginRight="auto"
-        marginTop={10}
+        
       >
+        <Box 
+        display="flex"
+        flexDirection="column"
+        justifyContent={"center"}
+        maxWidth={700}
+        alignContent={"center"}
+        alignSelf="center"
+        marginLeft={"auto"}
+        marginRight="auto"
+        
+      >
+        <br></br><br></br>
+        <h2><center>Add New Tea Product</center></h2>
+        <br></br><br></br>
+        
         <FormLabel>Name</FormLabel>
         <TextField
           value={inputs.name}
@@ -128,7 +146,7 @@ const Add = () => {
           name="price"
         />
 
-        <FormLabel>Upload Event Image (Max Size: 5MB)</FormLabel>
+        <FormLabel>Upload Tea Image (Max Size: 5MB)</FormLabel>
 
         <TextField
           key="image"
@@ -158,8 +176,10 @@ const Add = () => {
         <button class="button" variant="contained" type="submit">
           Add Product
         </button>
+        </Box>
       </Box>
     </form>
+    </div>
   );
 };
 

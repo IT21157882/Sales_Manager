@@ -10,6 +10,8 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button } from "@mui/material";
 import ItemPDF from "./ItemPDF";
+import backgroundImage from "../images/tae.jpg";
+import { Box, FormLabel, TextField } from "@mui/material";
 
 const URL = "http://localhost:5000/books";
 
@@ -19,13 +21,14 @@ const fetchHandler = async () => {
 
 const CustomizedInputBase = (props) => {
   return (
+    <div>
     <Paper
       component="form"
       sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Search Events."
+        placeholder="Search Tea Product."
         inputProps={{ "aria-label": "search events" }}
         value={props.keyword}
         onChange={props.handleKeywordChange}
@@ -35,6 +38,7 @@ const CustomizedInputBase = (props) => {
       </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
     </Paper>
+    </div>
   );
 };
 
@@ -53,8 +57,8 @@ const Items = () => {
   } else {
     searchResult = items.filter((event) => {
       const re = new RegExp(`${keyword}`, "i");
-      console.log(event.name.match(re));
-      if (event.name.match(re) === null) {
+      console.log(event.author.match(re));
+      if (event.author.match(re) === null) {
         return false;
       } else {
         return true;
@@ -69,26 +73,52 @@ const Items = () => {
   console.log(items);
 
   return (
-    <div>
+    <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover'}}>
+      <br></br><br></br>
+      <h1><center>Tea Products List</center></h1>
+      <br></br><br></br>
+      <center>
       <div className="justify-center flex mt-5">
         <CustomizedInputBase
           keyword={keyword}
           handleKeywordChange={handleKeywordChange}
         />
       </div>
-      <ul type="none">
+      </center>
+      <br></br><br></br>
+
+      <Box style={{ backgroundColor: 'white'}}
+        display="flex"
+        flexDirection="column"
+        justifyContent={"center"}
+        // maxWidth={700}
+        alignContent={"center"}
+        alignSelf="center"
+        marginLeft={"auto"}
+        marginRight="auto"
+        
+      >
+
+      <ul type="none" >
         {searchResult &&
           searchResult.map((item, i) => (
-            <li className="book" key={i}>
+            <li className="book" key={i} >
               <Item book={item} />
             </li>
           ))}
       </ul>
-      <Button color="secondary" variant="contained">
+      {/* <Button color="secondary" variant="contained">
         Export All Event Details
-      </Button>
-      <ItemPDF tableData={searchResult} />
-    </div>
+      </Button> */}
+      <br></br><br></br>
+      <center >
+        <ItemPDF tableData={searchResult} />
+      </center>
+      <br></br>
+      </Box>
+      
+      </div>
+    
   );
 };
 

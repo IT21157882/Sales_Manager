@@ -23,13 +23,16 @@ const getById = async (req, res, next) => {
     console.log(err);
   }
   if (!book) {
-    return res.status(404).json({ message: "No Book found" });
+    return res.status(404).json({ message: "No Products found" });
   }
   return res.status(200).json({ book });
 };
 
 const addBook = async (req, res, next) => {
   const { name, author, description, price, available, image } = req.body;
+  if (!name || !author || !description || !price || !available || !image) {
+    return res.status(400).json({ message: "Please Enter All Fields" });
+  }
   let book;
   try {
     book = new Book({
